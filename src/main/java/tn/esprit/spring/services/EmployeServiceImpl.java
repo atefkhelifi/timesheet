@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +32,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	ContratRepository contratRepoistory;
 	@Autowired
 	TimesheetRepository timesheetRepository;
-
+	private static final Logger l = LogManager.getLogger(EmployeServiceImpl.class);
 	@Override
 	public Employe authenticate(String login, String password) {
 		
@@ -87,16 +89,20 @@ public class EmployeServiceImpl implements IEmployeService {
 	// Tablesapce (espace disque) 
 
 	public int ajouterContrat(Contrat contrat) {
+		l.info("In  addContrat : " + contrat); 
 		contratRepoistory.save(contrat);
+		l.info("Out of  addContat. "); 
 		return contrat.getReference();
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-
+		l.info("In  FindContrat : " + contratId); 
+		l.info("In  FindEmploye : " + employeId); 
 		contratManagedEntity.setEmploye(employeManagedEntity);
 		contratRepoistory.save(contratManagedEntity);
+		l.info("Out of  ContratEmploye. "); 
 
 	}
 
@@ -160,7 +166,13 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public List<Employe> getAllEmployes() {
-		return (List<Employe>) employeRepository.findAll();
-	}
+		l.info("In  getAllEmployes : "); 
+		List<Employe> employes = (List<Employe>) employeRepository.findAll(); 
+		for (Employe employe : employes) {
+			l.debug("employe +++ : " + employe);
+		}
+		l.info("Out of retrieveAllUsers."); 
+		return employes;
+	}	
 
 }

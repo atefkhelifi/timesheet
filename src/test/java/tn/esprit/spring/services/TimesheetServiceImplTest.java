@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class TimesheetServiceImplTest {
 	int id=	Tm.ajouterMission(mission);
 	//List<Mission> missions= (List<Mission>) missionRepository.findAll();
 		
-		assertEquals(2,id);
+		assertEquals(1,id);
 	}}
 
 
