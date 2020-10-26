@@ -17,6 +17,8 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 
 	@Autowired
     EntrepriseRepository entrepriseRepoistory;
+	
+	
 	@Autowired
 	DepartementRepository deptRepoistory;
 	

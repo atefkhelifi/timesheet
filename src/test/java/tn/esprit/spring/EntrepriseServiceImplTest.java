@@ -78,15 +78,16 @@ public class EntrepriseServiceImplTest {
 	}
 	*/
 
-	
+/*	
 	 @Test
 	 public void testdeleteEntrepriseById() {
 		  
 		  
+		 
 		  es.deleteEntrepriseById(5); 
 		  Entreprise e =entrepriseRepoistory.findById(5).get();
 		  assertEquals(5, e.getId()); 
-	}
+	}*/
 	
 /*
 	
