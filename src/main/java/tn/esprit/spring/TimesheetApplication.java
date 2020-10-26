@@ -16,14 +16,18 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import tn.esprit.spring.config.LoginFilter;
+<<<<<<< HEAD
 import tn.esprit.spring.services.DepartementServiceImpl;
+=======
+import tn.esprit.spring.services.ContratServiceImpl;
+>>>>>>> 4bb73c15915bd86f52edef351080d0e7fa2d9db1
 
 @SpringBootApplication
 @EnableAutoConfiguration
 public class TimesheetApplication {
 
 	public static void main(String[] args) {SpringApplication.run(TimesheetApplication.class, args);}
-
+	private static final Logger l = LogManager.getLogger(ContratServiceImpl.class);
 	@Bean
 	public ServletRegistrationBean servletRegistrationBean() {
 		FacesServlet servlet = new FacesServlet();
