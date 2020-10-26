@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,30 +33,42 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	@Autowired
 	EmployeRepository employeRepository;
 	
+	private static final Logger l = Logger.getLogger(TimesheetServiceImpl.class);
+	
 	public int ajouterMission(Mission mission) {
+		l.info("In  addMission : " + mission); 
 		missionRepository.save(mission);
+		l.info("Out of  addMission. "); 
 		return mission.getId();
 	}
     
 	public void affecterMissionADepartement(int missionId, int depId) {
+		
 		Mission mission = missionRepository.findById(missionId).get();
 		Departement dep = deptRepoistory.findById(depId).get();
+		l.info("In  FindMission : " + missionId); 
+		l.info("In  FindDepartment : " + depId); 
 		mission.setDepartement(dep);
 		missionRepository.save(mission);
-		
+		l.info("Out of  MissionToDepartment. "); 
+		    
 	}
 
 	public void ajouterTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin) {
+
 		TimesheetPK timesheetPK = new TimesheetPK();
+		
 		timesheetPK.setDateDebut(dateDebut);
 		timesheetPK.setDateFin(dateFin);
 		timesheetPK.setIdEmploye(employeId);
 		timesheetPK.setIdMission(missionId);
 		
 		Timesheet timesheet = new Timesheet();
+		l.info("In  addTimesheet : " + timesheet); 
 		timesheet.setTimesheetPK(timesheetPK);
 		timesheet.setValide(false); //par defaut non valide
 		timesheetRepository.save(timesheet);
+		l.info("Out of  addTimesheet. "); 
 		
 	}
 
@@ -98,7 +112,9 @@ public class TimesheetServiceImpl implements ITimesheetService {
 
 	
 	public List<Employe> getAllEmployeByMission(int missionId) {
+		l.info("in GetEmploye By Mission id = " + missionId);
 		return timesheetRepository.getAllEmployeByMission(missionId);
+		///l.info("Employe Returned : " );
 	}
 
 }
