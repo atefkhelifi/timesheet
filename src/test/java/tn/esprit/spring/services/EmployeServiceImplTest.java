@@ -50,25 +50,25 @@ public class EmployeServiceImplTest {
 //	 }
 	/*************************************************/
 
-	 @Test
-	 public void TestmettreAjourEmailByEmployeId() {
-	 employeServiceImpl.mettreAjourEmailByEmployeId("khaoulaaaaa.mejri.1@esprit.tn",
-	 1);
-	 Employe employe = employeRepository.findById(1).get();
-	
-	 assertEquals("khaoulaaaaa.mejri.1@esprit.tn", employe.getEmail());
-	
-	 }
-	/********************************************/
 //	 @Test
-//		 public void testAffecterEmployeADepartement() {
-//		
-//		 employeServiceImpl.affecterContratAEmploye(1, 1);
-//		 Departement departement= deptRepoistory.findById(1).get();
-//		 int nbrEmployeParDepartement = departement.getEmployes().size();
-//		 assertEquals(1, nbrEmployeParDepartement);
-//		
-//		 }
+//	 public void TestmettreAjourEmailByEmployeId() {
+//	 employeServiceImpl.mettreAjourEmailByEmployeId("khaoulaaaaa.mejri.1@esprit.tn",
+//	 1);
+//	 Employe employe = employeRepository.findById(1).get();
+//	
+//	 assertEquals("khaoulaaaaa.mejri.1@esprit.tn", employe.getEmail());
+//	
+//	 }
+	/********************************************/
+	 @Test
+		 public void testAffecterEmployeADepartement() {
+		
+		 employeServiceImpl.affecterContratAEmploye(1, 1);
+		 Departement departement= deptRepoistory.findById(1).get();
+		 int nbrEmployeParDepartement = departement.getEmployes().size();
+		 assertEquals(1, nbrEmployeParDepartement);
+		
+		 }
 
 	/*******************************************/
 //	 @Test 
