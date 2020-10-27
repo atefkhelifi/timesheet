@@ -32,12 +32,12 @@ public class EmployeServiceImplTest {
 	DepartementRepository deptRepoistory;
 	@Autowired
 	ContratRepository contratRepoistory;
-//	 @Test
-//	 public void TestEmployeAuthenticate() {
-//	Employe authenticateEmploye =
-//	 employeServiceImpl.authenticate("khaoula.mejri.1@esprit.tn", "khaoula");
-//	 assertEquals(1, authenticateEmploye.getId());
-//	 }
+	 @Test
+	 public void TestEmployeAuthenticate() {
+	Employe authenticateEmploye =
+	 employeServiceImpl.authenticate("khaoula.mejri.1@esprit.tn", "khaoula");
+	 assertEquals(1, authenticateEmploye.getId());
+	 }
 
 	/***************************************************/
 //	 @Test
@@ -50,15 +50,15 @@ public class EmployeServiceImplTest {
 //	 }
 	/*************************************************/
 
-	 @Test
-	 public void TestmettreAjourEmailByEmployeId() {
-	 employeServiceImpl.mettreAjourEmailByEmployeId("khaoulaaaa.mejri.1@esprit.tn",
-	 1);
-	 Employe employe = employeRepository.findById(1).get();
-	
-	 assertEquals("khaoulaaaa.mejri.1@esprit.tn", employe.getEmail());
-	
-	 }
+//	 @Test
+//	 public void TestmettreAjourEmailByEmployeId() {
+//	 employeServiceImpl.mettreAjourEmailByEmployeId("khaoulaaaaa.mejri.1@esprit.tn",
+//	 1);
+//	 Employe employe = employeRepository.findById(1).get();
+//	
+//	 assertEquals("khaoulaaaaa.mejri.1@esprit.tn", employe.getEmail());
+//	
+//	 }
 	/********************************************/
 //	 @Test
 //		 public void testAffecterEmployeADepartement() {
