@@ -26,7 +26,68 @@ import tn.esprit.spring.repository.TimesheetRepository;
 public class EmployeServiceImplTest {
 	@Autowired
 	EmployeServiceImpl employeServiceImpl;
+	@Autowired
+	EmployeRepository employeRepository;
+	@Autowired
+	DepartementRepository deptRepoistory;
+	@Autowired
+	ContratRepository contratRepoistory;
+//	 @Test
+//	 public void TestEmployeAuthenticate() {
+//	Employe authenticateEmploye =
+//	 employeServiceImpl.authenticate("khaoula.mejri.1@esprit.tn", "khaoula");
+//	 assertEquals(1, authenticateEmploye.getId());
+//	 }
+
+	/***************************************************/
+//	 @Test
+//	 public void TestAddOrUpdateEmploye() {
+//	 Employe employe=new Employe("loutcha", "loutch",
+//	 "khaoula.mejri.1@esprit.tn", "loutcha", true, null);
+//	 int idEmploye = employeServiceImpl.addOrUpdateEmploye(employe);
+//	
+//	 assertEquals(3,idEmploye);
+//	 }
+	/*************************************************/
+
+	 @Test
+	 public void TestmettreAjourEmailByEmployeId() {
+	 employeServiceImpl.mettreAjourEmailByEmployeId("khaoulaaaa.mejri.1@esprit.tn",
+	 1);
+	 Employe employe = employeRepository.findById(1).get();
 	
+	 assertEquals("khaoulaaaa.mejri.1@esprit.tn", employe.getEmail());
+	
+	 }
+	/********************************************/
+//	 @Test
+//		 public void testAffecterEmployeADepartement() {
+//		
+//		 employeServiceImpl.affecterContratAEmploye(1, 1);
+//		 Departement departement= deptRepoistory.findById(1).get();
+//		 int nbrEmployeParDepartement = departement.getEmployes().size();
+//		 assertEquals(1, nbrEmployeParDepartement);
+//		
+//		 }
+
+	/*******************************************/
+//	 @Test 
+//	 public void desaffecterEmployeDuDepartementTest() {
+//		 employeServiceImpl.desaffecterEmployeDuDepartement(1, 1);
+//		Departement departement= deptRepoistory.findById(1).get(); 
+//		int nbrEmployeParDepartement = departement.getEmployes().size();
+//		 assertEquals(1, nbrEmployeParDepartement);}
+		 /**********************/
+//	 @Test
+//		 public void TestAjouterContrat() throws ParseException {
+//		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//		 Date d = dateFormat.parse("2020-10-25");
+//		 Contrat contrat = new Contrat(d, "CDI", 250);
+//		 int idcontrat = employeServiceImpl.ajouterContrat(contrat);
+//		
+//		 assertEquals(3,idcontrat);
+//		 }
+	/***************************************/
 
 	// @Test
 	// public void testGetAllEmployes() {
@@ -34,13 +95,5 @@ public class EmployeServiceImplTest {
 	// // if there are 5 users in DB :
 	// assertEquals(5, listEmploye .size());
 	// }
-	@Test
-	public void TestAjouterContrat() throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date d = dateFormat.parse("2020-10-25");
-		Contrat contrat = new Contrat(d, "CDI", 100);
-		int addcontrat = employeServiceImpl.ajouterContrat(contrat);
-	
-		assertEquals(1,addcontrat);
-	}
+
 }

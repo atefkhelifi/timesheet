@@ -33,45 +33,54 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Autowired
 	TimesheetRepository timesheetRepository;
 	private static final Logger l = LogManager.getLogger(EmployeServiceImpl.class);
+
 	@Override
 	public Employe authenticate(String login, String password) {
-		
+		l.info("Authentication");
 		return employeRepository.getEmployeByEmailAndPassword(login, password);
 	}
 
 	@Override
 	public int addOrUpdateEmploye(Employe employe) {
+		l.info("In  addOrUpdateEmploye : " + employe);
 		employeRepository.save(employe);
+		l.info("Out of  addOrUpdateEmploye. ");
 		return employe.getId();
 	}
 
-
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
+		l.info("In  MettreAjourEmailByEmployeId : ");
 		Employe employe = employeRepository.findById(employeId).get();
 		employe.setEmail(email);
 		employeRepository.save(employe);
+		l.info("Out of  MettreAjourEmailByEmployeId. ");
 
 	}
 
-	@Transactional	
+	@Transactional
 	public void affecterEmployeADepartement(int employeId, int depId) {
+		l.info("In  AffecterEmployeADepartement. ");
+		l.info("In  FindDepartement : " + depId);
 		Departement depManagedEntity = deptRepoistory.findById(depId).get();
+		l.info("Out Of  FindDepartement : " + depId);
+		l.info("In  FindEmploye : " + employeId);
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-
-		if(depManagedEntity.getEmployes() == null){
-
+		l.info("Out Of FindEmploye : " + employeId);
+		l.info(" if there are  no employees  ");
+		if (depManagedEntity.getEmployes() == null) {
 			List<Employe> employes = new ArrayList<>();
 			employes.add(employeManagedEntity);
 			depManagedEntity.setEmployes(employes);
-		}else{
-
+		} else {
+			l.info(" if there are employees ");
 			depManagedEntity.getEmployes().add(employeManagedEntity);
 		}
-
-		// à ajouter? 
-		deptRepoistory.save(depManagedEntity); 
+		// à ajouter?
+		deptRepoistory.save(depManagedEntity);
+		l.info("Out of  AffecterEmployeADepartement. ");
 
 	}
+
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
