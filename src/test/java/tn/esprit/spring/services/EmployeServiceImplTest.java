@@ -60,23 +60,23 @@ public class EmployeServiceImplTest {
 //	
 //	 }
 	/********************************************/
-	 @Test
-		 public void testAffecterEmployeADepartement() {
-		
-		 employeServiceImpl.affecterContratAEmploye(1, 1);
-		 Departement departement= deptRepoistory.findById(1).get();
-		 int nbrEmployeParDepartement = departement.getEmployes().size();
-		 assertEquals(1, nbrEmployeParDepartement);
-		
-		 }
+//	 @Test
+//		 public void testAffecterEmployeADepartement() {
+//		
+//		 employeServiceImpl.affecterContratAEmploye(1, 1);
+//		 Departement departement= deptRepoistory.findById(1).get();
+//		 int nbrEmployeParDepartement = departement.getEmployes().size();
+//		 assertEquals(1, nbrEmployeParDepartement);
+//		
+//		 }
 
 	/*******************************************/
-//	 @Test 
-//	 public void desaffecterEmployeDuDepartementTest() {
-//		 employeServiceImpl.desaffecterEmployeDuDepartement(1, 1);
-//		Departement departement= deptRepoistory.findById(1).get(); 
-//		int nbrEmployeParDepartement = departement.getEmployes().size();
-//		 assertEquals(1, nbrEmployeParDepartement);}
+	 @Test 
+	 public void desaffecterEmployeDuDepartementTest() {
+		 employeServiceImpl.desaffecterEmployeDuDepartement(1, 1);
+		Departement departement= deptRepoistory.findById(1).get(); 
+		int nbrEmployeParDepartement = departement.getEmployes().size();
+		 assertEquals(1, nbrEmployeParDepartement);}
 		 /**********************/
 //	 @Test
 //		 public void TestAjouterContrat() throws ParseException {
