@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +32,8 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	TimesheetRepository timesheetRepository;
 	@Autowired
 	EmployeRepository employeRepository;
-	private static final Logger l = LogManager.getLogger(TimesheetServiceImpl.class);
+	
+	private static final Logger l = Logger.getLogger(TimesheetServiceImpl.class);
 	
 	public int ajouterMission(Mission mission) {
 		l.info("In  addMission : " + mission); 
@@ -50,7 +51,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		mission.setDepartement(dep);
 		missionRepository.save(mission);
 		l.info("Out of  MissionToDepartment. "); 
-		
+		    
 	}
 
 	public void ajouterTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin) {
@@ -73,7 +74,8 @@ public class TimesheetServiceImpl implements ITimesheetService {
 
 	
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
-		System.out.println("In valider Timesheet");
+		//l.info("In  ValidateTimsheet : " + u); 
+		l.info("In valider Timesheet");
 		Employe validateur = employeRepository.findById(validateurId).get();
 		Mission mission = missionRepository.findById(missionId).get();
 		//verifier s'il est un chef de departement (interet des enum)
@@ -101,19 +103,26 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		//Comment Lire une date de la base de données
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		System.out.println("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
-		
+		l.info("OUT of valider Timesheet");
 	}
 
 	
 	public List<Mission> findAllMissionByEmployeJPQL(int employeId) {
-		return timesheetRepository.findAllMissionByEmployeJPQL(employeId);
+		l.info("in GetMissionByEmploye = " + employeId);
+		
+		List<Mission> m= timesheetRepository.findAllMissionByEmployeJPQL(employeId);
+		l.info("Mission Returned: " +m);
+		return m;
 	}
 
 	
+	
 	public List<Employe> getAllEmployeByMission(int missionId) {
 		l.info("in GetEmploye By Mission id = " + missionId);
-		return timesheetRepository.getAllEmployeByMission(missionId);
-		///l.info("Employe Returned : " );
+		List<Employe> e= timesheetRepository.getAllEmployeByMission(missionId);
+		
+		l.info("Employees Returned : " +e );
+		return e;
 	}
 
 }
