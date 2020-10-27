@@ -136,11 +136,13 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void deleteContratById(int contratId) {
+		l.info("In  DeleteContratById = " + contratId);
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		contratRepoistory.delete(contratManagedEntity);
+		l.info("entreprise deleted." + contratManagedEntity.getReference());
+		l.info("out of DeleteContratById");
 
 	}
-
 	public int getNombreEmployeJPQL() {
 		return employeRepository.countemp();
 	}

@@ -98,19 +98,25 @@ public class EmployeServiceImplTest {
 //	
 //	 }
 	/**********************************************/
-	@Test
-	public void TestgetEmployePrenomById() { 
-	String employe =employeServiceImpl.getEmployePrenomById(1); 
-	assertEquals("khaoula", employe);
-			  
-			 }
+//	@Test
+//	public void TestgetEmployePrenomById() { 
+//	String employe =employeServiceImpl.getEmployePrenomById(1); 
+//	assertEquals("khaoula", employe);
+//			  
+//			 }
 	/***************************/
-	 @Test 
-	 public void TestdeleteEmployeById() {
-		 employeServiceImpl.deleteEmployeById(3);
-		 List<Employe> empl = (List<Employe>)employeRepository.findAll(); 
-		 assertEquals(2, empl.size());}
+//	 @Test 
+//	 public void TestdeleteEmployeById() {
+//		 employeServiceImpl.deleteEmployeById(3);
+//		 List<Employe> empl = (List<Employe>)employeRepository.findAll(); 
+//		 assertEquals(2, empl.size());}
 	/********************************/
+	 @Test 
+	 public void TestDeleteContratById() {
+		 employeServiceImpl.deleteContratById(3);
+		 List<Contrat> contrat=(List<Contrat>)contratRepoistory.findAll(); 
+		 assertEquals(2, contrat.size());}
+	/*****************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
