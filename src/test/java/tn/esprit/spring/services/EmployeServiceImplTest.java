@@ -111,12 +111,19 @@ public class EmployeServiceImplTest {
 //		 List<Employe> empl = (List<Employe>)employeRepository.findAll(); 
 //		 assertEquals(2, empl.size());}
 	/********************************/
-	 @Test 
-	 public void TestDeleteContratById() {
-		 employeServiceImpl.deleteContratById(3);
-		 List<Contrat> contrat=(List<Contrat>)contratRepoistory.findAll(); 
-		 assertEquals(2, contrat.size());}
+//	 @Test 
+//	 public void TestDeleteContratById() {
+//		 employeServiceImpl.deleteContratById(3);
+//		 List<Contrat> contrat=(List<Contrat>)contratRepoistory.findAll(); 
+//		 assertEquals(2, contrat.size());}
 	/*****************************/
+	@Test
+	public void TestgetNombreEmployeJPQL()
+	{
+		 int nbr=employeServiceImpl.getNombreEmployeJPQL(); 
+	      assertEquals(2, nbr);
+	}
+	/**************************************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();

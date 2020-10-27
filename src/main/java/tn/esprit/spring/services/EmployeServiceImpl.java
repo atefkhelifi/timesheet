@@ -144,47 +144,64 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	}
 	public int getNombreEmployeJPQL() {
+		l.info("Count the number of employees");
 		return employeRepository.countemp();
 	}
 
 	public List<String> getAllEmployeNamesJPQL() {
-		return employeRepository.employeNames();
+		l.info("In  getAllEmployeNamesJPQL:");
+		List<String> s=employeRepository.employeNames();
+		l.info("Out of getAllEmployeNamesJPQL.");
+		return s;
 
 	}
 
 	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise) {
-		return employeRepository.getAllEmployeByEntreprisec(entreprise);
+		l.info("In  getAllEmployeByEntreprise="+entreprise);
+		List<Employe> employe=employeRepository.getAllEmployeByEntreprisec(entreprise);
+		l.info("Out Of   getAllEmployeByEntreprise="+employe);
+		return employe;
+		
 	}
 
 	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId) {
+		l.info("In MettreAjourEmailByEmployeIdJPQL");
 		employeRepository.mettreAjourEmailByEmployeIdJPQL(email, employeId);
+		l.info("Out Of MettreAjourEmailByEmployeIdJPQL");
 
 	}
+
 	public void deleteAllContratJPQL() {
+		l.info("In DeleteAllContratJPQL ");
 		employeRepository.deleteAllContratJPQL();
+		l.info("Out Of DeleteAllContratJPQL ");
 	}
 
 	public float getSalaireByEmployeIdJPQL(int employeId) {
+		l.info("Display employee salary");
 		return employeRepository.getSalaireByEmployeIdJPQL(employeId);
 	}
 
 	public Double getSalaireMoyenByDepartementId(int departementId) {
+		l.info("Display the average salary by department");
 		return employeRepository.getSalaireMoyenByDepartementId(departementId);
 	}
 
 	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
 			Date dateFin) {
+		l.info("Display timesheetsBy mission and date");
 		return timesheetRepository.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
 	}
 
 	public List<Employe> getAllEmployes() {
-		l.info("In  getAllEmployes : "); 
-		List<Employe> employes = (List<Employe>) employeRepository.findAll(); 
+		l.info("In  getAllEmployes : ");
+		List<Employe> employes = (List<Employe>) employeRepository.findAll();
 		for (Employe employe : employes) {
 			l.debug("employe +++ : " + employe);
 		}
-		l.info("Out of retrieveAllUsers."); 
+		l.info("Out of retrieveAllUsers.");
 		return employes;
-	}	
+	}
+
 
 }
