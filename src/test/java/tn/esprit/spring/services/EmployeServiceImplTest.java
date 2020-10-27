@@ -32,22 +32,22 @@ public class EmployeServiceImplTest {
 	DepartementRepository deptRepoistory;
 	@Autowired
 	ContratRepository contratRepoistory;
-	 @Test
-	 public void TestEmployeAuthenticate() {
-	Employe authenticateEmploye =
-	 employeServiceImpl.authenticate("khaoula.mejri.1@esprit.tn", "khaoula");
-	 assertEquals(1, authenticateEmploye.getId());
-	 }
+//	 @Test
+//	 public void TestEmployeAuthenticate() {
+//	Employe authenticateEmploye =
+//	 employeServiceImpl.authenticate("khaoula.mejri.1@esprit.tn", "khaoula");
+//	 assertEquals(1, authenticateEmploye.getId());
+//	 }
 
 	/***************************************************/
-//	 @Test
-//	 public void TestAddOrUpdateEmploye() {
-//	 Employe employe=new Employe("loutcha", "loutch",
-//	 "khaoula.mejri.1@esprit.tn", "loutcha", true, null);
-//	 int idEmploye = employeServiceImpl.addOrUpdateEmploye(employe);
-//	
-//	 assertEquals(3,idEmploye);
-//	 }
+	 @Test
+	 public void TestAddOrUpdateEmploye() {
+	 Employe employe=new Employe("loutcha", "loutch",
+	 "khaoula.mejri.1@esprit.tn", "loutcha", true, null);
+	 int idEmploye = employeServiceImpl.addOrUpdateEmploye(employe);
+	
+	 assertEquals(3,idEmploye);
+	 }
 	/*************************************************/
 
 //	 @Test
