@@ -78,17 +78,26 @@ public class EmployeServiceImplTest {
 //		int nbrEmployeParDepartement = departement.getEmployes().size();
 //		 assertEquals(1, nbrEmployeParDepartement);}
 		 /**********************/
-	 @Test
-		 public void TestAjouterContrat() throws ParseException {
-		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		 Date d = dateFormat.parse("2020-10-25");
-		 Contrat contrat = new Contrat(d, "CDI", 250);
-		 int idcontrat = employeServiceImpl.ajouterContrat(contrat);
-		
-		 assertEquals(3,idcontrat);
-		 }
+//	 @Test
+//		 public void TestAjouterContrat() throws ParseException {
+//		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//		 Date d = dateFormat.parse("2020-10-25");
+//		 Contrat contrat = new Contrat(d, "CDI", 250);
+//		 int idcontrat = employeServiceImpl.ajouterContrat(contrat);
+//		
+//		 assertEquals(3,idcontrat);
+//		 }
 	/***************************************/
-
+	 @Test
+	 public void testAffecterContratAEmployet() {
+	
+	 employeServiceImpl.affecterContratAEmploye(2, 2);
+	 Employe employe = employeRepository.findById(2).get();
+	 int idContrat = employe.getContrat().getReference();
+	 assertEquals(2, idContrat);
+	
+	 }
+	/**********************************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
