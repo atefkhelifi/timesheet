@@ -40,25 +40,25 @@ public class EmployeServiceImplTest {
 //	 }
 
 	/***************************************************/
-	 @Test
-	 public void TestAddOrUpdateEmploye() {
-	 Employe employe=new Employe("loutcha", "loutch",
-	 "khaoula.mejri.1@esprit.tn", "loutcha", true, null);
-	 int idEmploye = employeServiceImpl.addOrUpdateEmploye(employe);
-	
-	 assertEquals(3,idEmploye);
-	 }
+//	 @Test
+//	 public void TestAddOrUpdateEmploye() {
+//	 Employe employe=new Employe("loutcha", "loutch",
+//	 "khaoula.mejri.1@esprit.tn", "loutcha", true, null);
+//	 int idEmploye = employeServiceImpl.addOrUpdateEmploye(employe);
+//	
+//	 assertEquals(3,idEmploye);
+//	 }
 	/*************************************************/
 
-//	 @Test
-//	 public void TestmettreAjourEmailByEmployeId() {
-//	 employeServiceImpl.mettreAjourEmailByEmployeId("khaoulaaaaa.mejri.1@esprit.tn",
-//	 1);
-//	 Employe employe = employeRepository.findById(1).get();
-//	
-//	 assertEquals("khaoulaaaaa.mejri.1@esprit.tn", employe.getEmail());
-//	
-//	 }
+	 @Test
+	 public void TestmettreAjourEmailByEmployeId() {
+	 employeServiceImpl.mettreAjourEmailByEmployeId("khaoulaaaaa.mejri.1@esprit.tn",
+	 1);
+	 Employe employe = employeRepository.findById(1).get();
+	
+	 assertEquals("khaoulaaaaa.mejri.1@esprit.tn", employe.getEmail());
+	
+	 }
 	/********************************************/
 //	 @Test
 //		 public void testAffecterEmployeADepartement() {
