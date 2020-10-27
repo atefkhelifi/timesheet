@@ -105,6 +105,12 @@ public class EmployeServiceImplTest {
 			  
 			 }
 	/***************************/
+	 @Test 
+	 public void TestdeleteEmployeById() {
+		 employeServiceImpl.deleteEmployeById(3);
+		 List<Employe> empl = (List<Employe>)employeRepository.findAll(); 
+		 assertEquals(2, empl.size());}
+	/********************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();

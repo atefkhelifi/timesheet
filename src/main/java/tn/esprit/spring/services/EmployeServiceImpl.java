@@ -120,18 +120,19 @@ public class EmployeServiceImpl implements IEmployeService {
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 		return employeManagedEntity.getPrenom();
 	}
-	public void deleteEmployeById(int employeId)
-	{
+	public void deleteEmployeById(int employeId) {
+		l.info("In  DeleteEmployeById= " + employeId);
 		Employe employe = employeRepository.findById(employeId).get();
 
-		//Desaffecter l'employe de tous les departements
-		//c'est le bout master qui permet de mettre a jour
-		//la table d'association
-		for(Departement dep : employe.getDepartements()){
+		// Desaffecter l'employe de tous les departements
+		// c'est le bout master qui permet de mettre a jour
+		// la table d'association
+		for (Departement dep : employe.getDepartements()) {
 			dep.getEmployes().remove(employe);
 		}
 
 		employeRepository.delete(employe);
+		l.info("out of DeleteEmployeById");
 	}
 
 	public void deleteContratById(int contratId) {
