@@ -71,22 +71,22 @@ public class EmployeServiceImplTest {
 //		 }
 
 	/*******************************************/
-	 @Test 
-	 public void desaffecterEmployeDuDepartementTest() {
-		 employeServiceImpl.desaffecterEmployeDuDepartement(1, 1);
-		Departement departement= deptRepoistory.findById(1).get(); 
-		int nbrEmployeParDepartement = departement.getEmployes().size();
-		 assertEquals(1, nbrEmployeParDepartement);}
+//	 @Test 
+//	 public void desaffecterEmployeDuDepartementTest() {
+//		 employeServiceImpl.desaffecterEmployeDuDepartement(1, 1);
+//		Departement departement= deptRepoistory.findById(1).get(); 
+//		int nbrEmployeParDepartement = departement.getEmployes().size();
+//		 assertEquals(1, nbrEmployeParDepartement);}
 		 /**********************/
-//	 @Test
-//		 public void TestAjouterContrat() throws ParseException {
-//		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//		 Date d = dateFormat.parse("2020-10-25");
-//		 Contrat contrat = new Contrat(d, "CDI", 250);
-//		 int idcontrat = employeServiceImpl.ajouterContrat(contrat);
-//		
-//		 assertEquals(3,idcontrat);
-//		 }
+	 @Test
+		 public void TestAjouterContrat() throws ParseException {
+		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 Date d = dateFormat.parse("2020-10-25");
+		 Contrat contrat = new Contrat(d, "CDI", 250);
+		 int idcontrat = employeServiceImpl.ajouterContrat(contrat);
+		
+		 assertEquals(3,idcontrat);
+		 }
 	/***************************************/
 
 	// @Test
