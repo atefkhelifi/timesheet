@@ -88,16 +88,23 @@ public class EmployeServiceImplTest {
 //		 assertEquals(3,idcontrat);
 //		 }
 	/***************************************/
-	 @Test
-	 public void testAffecterContratAEmployet() {
-	
-	 employeServiceImpl.affecterContratAEmploye(2, 2);
-	 Employe employe = employeRepository.findById(2).get();
-	 int idContrat = employe.getContrat().getReference();
-	 assertEquals(2, idContrat);
-	
-	 }
+//	 @Test
+//	 public void testAffecterContratAEmployet() {
+//	
+//	 employeServiceImpl.affecterContratAEmploye(2, 2);
+//	 Employe employe = employeRepository.findById(2).get();
+//	 int idContrat = employe.getContrat().getReference();
+//	 assertEquals(2, idContrat);
+//	
+//	 }
 	/**********************************************/
+	@Test
+	public void TestgetEmployePrenomById() { 
+	String employe =employeServiceImpl.getEmployePrenomById(1); 
+	assertEquals("khaoula", employe);
+			  
+			 }
+	/***************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
