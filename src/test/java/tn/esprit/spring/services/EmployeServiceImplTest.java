@@ -17,9 +17,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
+import tn.esprit.spring.entities.Mission;
+import tn.esprit.spring.entities.Role;
+import tn.esprit.spring.entities.Timesheet;
+import tn.esprit.spring.entities.TimesheetPK;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
+import tn.esprit.spring.repository.MissionRepository;
 import tn.esprit.spring.repository.TimesheetRepository;
 
 @RunWith(SpringRunner.class)
@@ -33,6 +38,10 @@ public class EmployeServiceImplTest {
 	DepartementRepository deptRepoistory;
 	@Autowired
 	ContratRepository contratRepoistory;
+	@Autowired
+	TimesheetRepository timesheetRepository;
+	@Autowired
+	MissionRepository missionRepository;
 	// @Test
 	// public void TestEmployeAuthenticate() {
 	// Employe authenticateEmploye =
@@ -61,6 +70,7 @@ public class EmployeServiceImplTest {
 	//
 	// }
 	/********************************************/
+	/*************************************/
 	// @Test
 	// public void testAffecterEmployeADepartement() {
 	//
@@ -72,6 +82,7 @@ public class EmployeServiceImplTest {
 	// }
 
 	/*******************************************/
+	/********************************/
 	// @Test
 	// public void desaffecterEmployeDuDepartementTest() {
 	// employeServiceImpl.desaffecterEmployeDuDepartement(1, 1);
@@ -146,18 +157,41 @@ public class EmployeServiceImplTest {
 //		assertEquals(0, contrat .size());
 //	}
 		 /********************************/
-	@Test
-	public void TestgetSalaireByEmployeIdJPQL() {
-
-		float salaire = employeServiceImpl.getSalaireByEmployeIdJPQL(2);
-		assertEquals(250, salaire,0 );
-		}
+//	@Test
+//	public void TestgetSalaireByEmployeIdJPQL() {
+//
+//		float salaire = employeServiceImpl.getSalaireByEmployeIdJPQL(2);
+//		assertEquals(250, salaire,0 );
+//		}
 	/***********************************/
-	// @Test
-	// public void testGetAllEmployes() {
-	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
-	// // if there are 5 users in DB :
-	// assertEquals(5, listEmploye .size());
-	// }
+	/********************************************/
+//	@Test
+//	public void TestgetSalaireMoyenByDepartementId() {
+//
+//		double sal = employeServiceImpl.getSalaireMoyenByDepartementId(1);
+//		assertEquals(125, sal);
+//		}
+	/**********************************************/
+	/******************************/
+	/**
+	 * @throws ParseException **********************/
+//	@Test
+//	public void TestgetTimesheetsByMissionAndDate() throws ParseException
+//	{ 
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+//		Date dateDebut = dateFormat.parse("2020-10-07");
+//		Date  dateFin = dateFormat.parse("2020-10-22");
+//		Employe emp = employeRepository.findById(2).get();	
+//		Mission miss =missionRepository.findById(1).get();
+//		List<Timesheet> list =	employeServiceImpl.getTimesheetsByMissionAndDate(emp, miss, dateDebut, dateFin);
+//		assertEquals(1, list .size());
+//	}
+	/**********************/
+	 @Test
+	 public void testGetAllEmployes() {
+	 List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
+	 // if there are 5 users in DB :
+	 assertEquals(2, listEmploye .size());
+	 }
 
 }
