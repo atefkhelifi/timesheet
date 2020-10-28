@@ -117,13 +117,18 @@ public class EmployeServiceImplTest {
 //		 List<Contrat> contrat=(List<Contrat>)contratRepoistory.findAll(); 
 //		 assertEquals(2, contrat.size());}
 	/*****************************/
-	@Test
-	public void TestgetNombreEmployeJPQL()
-	{
-		 int nbr=employeServiceImpl.getNombreEmployeJPQL(); 
-	      assertEquals(2, nbr);
-	}
+//	@Test
+//	public void TestgetNombreEmployeJPQL()
+//	{
+//		 int nbr=employeServiceImpl.getNombreEmployeJPQL(); 
+//	      assertEquals(2, nbr);
+//	}
 	/**************************************************/
+	@Test 
+	public void TestgetAllEmployeNamesJPQL() {
+		List<String> emp=employeServiceImpl.getAllEmployeNamesJPQL();
+		assertEquals(2, emp.size()); }
+	/*******************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
