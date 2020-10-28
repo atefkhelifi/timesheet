@@ -79,25 +79,25 @@ public class EmployeServiceImplTest {
 	// int nbrEmployeParDepartement = departement.getEmployes().size();
 	// assertEquals(1, nbrEmployeParDepartement);}
 	/**********************/
-	// @Test
-	// public void TestAjouterContrat() throws ParseException {
-	// SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	// Date d = dateFormat.parse("2020-10-25");
-	// Contrat contrat = new Contrat(d, "CDI", 250);
-	// int idcontrat = employeServiceImpl.ajouterContrat(contrat);
-	//
-	// assertEquals(3,idcontrat);
-	// }
+//	 @Test
+//	 public void TestAjouterContrat() throws ParseException {
+//	 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//	 Date d = dateFormat.parse("2020-10-25");
+//	 Contrat contrat = new Contrat(d, "CDI", 250);
+//	 int idcontrat = employeServiceImpl.ajouterContrat(contrat);
+//	
+//	 assertEquals(5,idcontrat);
+//	 }
 	/***************************************/
-	// @Test
-	// public void testAffecterContratAEmployet() {
-	//
-	// employeServiceImpl.affecterContratAEmploye(2, 2);
-	// Employe employe = employeRepository.findById(2).get();
-	// int idContrat = employe.getContrat().getReference();
-	// assertEquals(2, idContrat);
-	//
-	// }
+//	 @Test
+//	 public void testAffecterContratAEmployet() {
+//	
+//	 employeServiceImpl.affecterContratAEmploye(4, 2);
+//	 Employe employe = employeRepository.findById(2).get();
+//	 int idContrat = employe.getContrat().getReference();
+//	 assertEquals(4, idContrat);
+//	
+//	 }
 	/**********************************************/
 	// @Test
 	// public void TestgetEmployePrenomById() {
@@ -139,13 +139,20 @@ public class EmployeServiceImplTest {
 //	}
 
 	/*******************************/
-	@Test public void TestdeleteAllContratJPQL() {
-		employeServiceImpl.deleteAllContratJPQL();
-		List<Contrat> contrat = (List<Contrat>)contratRepoistory.findAll();
-		//assertNull(contrat);
-		assertEquals(0, contrat .size());
-	}
+//	@Test public void TestdeleteAllContratJPQL() {
+//		employeServiceImpl.deleteAllContratJPQL();
+//		List<Contrat> contrat = (List<Contrat>)contratRepoistory.findAll();
+//		//assertNull(contrat);
+//		assertEquals(0, contrat .size());
+//	}
 		 /********************************/
+	@Test
+	public void TestgetSalaireByEmployeIdJPQL() {
+
+		float salaire = employeServiceImpl.getSalaireByEmployeIdJPQL(2);
+		assertEquals(250, salaire,0 );
+		}
+	/***********************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
