@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -130,14 +131,21 @@ public class EmployeServiceImplTest {
 	// List<String> emp=employeServiceImpl.getAllEmployeNamesJPQL();
 	// assertEquals(2, emp.size()); }
 	/*******************************/
-	@Test
-	public void TestmettreAjourEmailByEmployeIdJPQL() {
-		employeServiceImpl.mettreAjourEmailByEmployeIdJPQL("loutcha.mejri.1@esprit.tn", 2);
-		Employe employe = employeRepository.findById(2).get();
-		assertEquals("loutcha.mejri.1@esprit.tn", employe.getEmail());
-	}
+//	@Test
+//	public void TestmettreAjourEmailByEmployeIdJPQL() {
+//		employeServiceImpl.mettreAjourEmailByEmployeIdJPQL("loutcha.mejri.1@esprit.tn", 2);
+//		Employe employe = employeRepository.findById(2).get();
+//		assertEquals("loutcha.mejri.1@esprit.tn", employe.getEmail());
+//	}
 
 	/*******************************/
+	@Test public void TestdeleteAllContratJPQL() {
+		employeServiceImpl.deleteAllContratJPQL();
+		List<Contrat> contrat = (List<Contrat>)contratRepoistory.findAll();
+		//assertNull(contrat);
+		assertEquals(0, contrat .size());
+	}
+		 /********************************/
 	// @Test
 	// public void testGetAllEmployes() {
 	// List<Employe> listEmploye = employeServiceImpl.getAllEmployes();
