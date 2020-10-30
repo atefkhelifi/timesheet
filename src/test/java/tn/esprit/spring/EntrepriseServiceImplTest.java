@@ -33,52 +33,51 @@ public class EntrepriseServiceImplTest {
 	@Autowired
 	DepartementRepository deptRepoistory;
 	
-	/*@Test
+	@Test
 	public void testAddEntreprise() throws ParseException {
 		//Entreprise e = new Entreprise("Focus", "marketing"); 
 		  Entreprise  e = new Entreprise("Teamwill","sssss") ;
           Entreprise entrepriseAdded = es.ajouterEntreprise(e);
 		  assertEquals(e.getName(), entrepriseAdded.getName());
 	}
-	*/
 	
 	
-/*	@Test
+	
+	@Test
 	public void testAddDepartement() throws ParseException {
 		
 		 Departement  dep = new Departement("yasminet") ;
           Departement departementAdded = es.ajouterDepartement(dep);
 		  assertEquals(dep.getName(), departementAdded.getName());
 		}
-	*/
 	
-	/*@Test
+	@Test
 	public void testgetEntrepriseById() {
 		//Entreprise EntrepriseByIdRetrieved = es.getEntrepriseById(1); 
 		//assertEquals(1L, EntrepriseByIdRetrieved.getId());
 		  Entreprise entrepriseRetrieved =es.getEntrepriseById(3); 
 	      assertEquals(3, entrepriseRetrieved.getId());
-	}*/
+	}
 	
 	
-	/*@Test
+	@Test
 	public void testgetAllDepartementsNamesByEntreprise() {
 		List<String>listDepartments = es.getAllDepartementsNamesByEntreprise(3); 
 		// if there are 5 departements in DB : 
 		assertEquals(5, listDepartments.size());
-	}*/
+	}
 	
 	
 	
-	/*@Test
+	@Test
 	public void testRetrieveAllEntreprises() {
 		List<Entreprise> listEntreprises = es.retrieveAllEntreprises(); 
 		// if there are 5 users in DB : 
 		assertEquals(2, listEntreprises.size());
 	}
-	*/
+	
 
-/*	
+	
 	 @Test
 	 public void testdeleteEntrepriseById() {
 		  
@@ -87,7 +86,7 @@ public class EntrepriseServiceImplTest {
 		  es.deleteEntrepriseById(5); 
 		  Entreprise e =entrepriseRepoistory.findById(5).get();
 		  assertEquals(5, e.getId()); 
-	}*/
+	}
 	
 /*
 	

@@ -1,4 +1,4 @@
-package tn.esprit.spring.services;
+ package tn.esprit.spring.services;
 
 import static org.junit.Assert.assertEquals;
 
@@ -38,7 +38,7 @@ public class TimesheetServiceImplTest {
 	@Autowired
 	EmployeRepository employeRepository;
 	
-	/*@Test
+	@Test
 	public void testAjouterMission() {
 	Mission mission = new Mission("test", "facile");
 	int id=	Tm.ajouterMission(mission);
@@ -57,8 +57,8 @@ public void testAffecterMission() {
 	
 	
 }
-	*/
-	/*@Test
+	
+	@Test
 	public void testAjouterTimesheet() throws ParseException {
 SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date db=dataFormat.parse("2020-10-23");
@@ -71,23 +71,22 @@ SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
 		assertEquals(5,idm);
 	}
-}*/
 
 
-/*	@Test
+	@Test
 	public void testAllEmployeByMission() {
 		
 		List<Employe> listEmploye = Tm.getAllEmployeByMission(1);
 	 assertEquals(1,listEmploye.size());
 	}  
-	*/
 	
-	/*@Test
+	
+	@Test
 	public void testAllMissionByEmploye() {
 		
 		List<Mission> listMission = Tm.findAllMissionByEmployeJPQL(1);
 	 assertEquals(4,listMission.size());
-	}  */
+	}  
 	
 	@Test
 	public void ValiderTimesheet() throws ParseException {
@@ -108,11 +107,5 @@ validateur.setRole(Role.CHEF_DEPARTEMENT);
 	 assertEquals(1,idv);
 
 	}  
-	/*
-	List<Mission> missions= (List<Mission>) missionRepository.findAll();
-	
-	assertEquals(6,missions.size());
-}
-*/
 	
 }

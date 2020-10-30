@@ -28,17 +28,17 @@ public class DepartementTest {
 	public void testRetrieveDepartement() {
 		List<Departement> departements = depService.getAllDepartements(); 
 		assertEquals(2, departements.size());
-	}*/
+	}
 	
-	 /*@Test
+	 @Test
 	 public void testdeleteDepartement() {
 
 depService.deleteDepartement(1);
 		 Departement d=deptRepoistory.findById(1).get();
 			assertEquals(1, d.getId());
 		   
-	 }*/
-	/* @Test
+	 }
+	 @Test
 	 public void testdeleteDepartementTaille() {
 
 depService.deleteDepartement(2);
@@ -48,25 +48,25 @@ depService.deleteDepartement(2);
 		assertEquals(0, departements.size());
 		   
 	 }*/
-	/*@Test
-	public void testAddDepartement() throws ParseException {
+	@Test
+	public void testAddDepartement() {
 		Departement u = new Departement("aa"); 
 		Departement departementAdded = depService.addDepartement(u); 
 		assertEquals(u.getName(), departementAdded.getName());
-	}*/
+	}
 	
 	@Test
-	public void testAddDepartement() throws ParseException {
+	public void testUpdateDepartement()  {
 		Departement u = new Departement(3, "kk"); 
 		Departement departementUpdated = depService.updateDepartement(u); 
 		assertEquals(u.getName(), departementUpdated.getName());
 	}
 	
-	/*@Test
+	@Test
 	public void testRetrieveDepartement() {
 		Departement departementRetrieved = depService.retrieveDepartement(3); 
 		assertEquals(3, departementRetrieved.getId());
-	}*/
+	}
 	
 	 
 	 

@@ -1,10 +1,7 @@
 package tn.esprit.spring;
 
 import static org.junit.Assert.assertEquals;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.FindOrBuilder;
-
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.services.ContratServiceImpl;
@@ -30,13 +25,13 @@ public class ContratServiceImplTest {
 	ContratServiceImpl contratServiceimpl;
 	@Autowired
 	ContratRepository contratrep;
-	/*
-	 * @Test public void testRetrieveAllContrats() { List<Contrat>
-	 * contrats=contratServiceimpl.getAllContrats(); assertEquals(1,
-	 * contrats.size());
-	 * 
-	 * }
-	 */
+	
+	  @Test public void testRetrieveAllContrats() { List<Contrat>
+	  contrats=contratServiceimpl.getAllContrats(); assertEquals(1,
+	  contrats.size());
+	  
+	  }
+	 
 
 	
 	 @Test public void testAjoutContrat() throws ParseException { SimpleDateFormat
@@ -46,7 +41,7 @@ public class ContratServiceImplTest {
 	 assertNotNull(contratAdded); }
 	 
 
-	/*@Test
+@Test
 	public void testModifyContrat() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = dateFormat.parse("2022-03-22");
@@ -55,12 +50,12 @@ public class ContratServiceImplTest {
 		assertEquals(c.getReference(), contratUpdated.getReference());
 		// si elle est non nulle le test return false
 		// assertNull(contratUpdated);
-	}*/
+	}}
 
 	/*
-	 * @Test public void testRetrieveContrat() { Contrat contratRetrieved =
-	 * contratServiceimpl.retrieveContrat(2); Contrat
-	 * c=contratrep.findById(2).get();
-	 * assertEquals(c.getReference(),contratRetrieved.getReference()); }
-	 */
-}
+	  @Test public void testRetrieveContrat() { Contrat contratRetrieved =
+	 contratServiceimpl.retrieveContrat(2); Contrat
+	  c=contratrep.findById(2).get();
+	  assertEquals(c.getReference(),contratRetrieved.getReference()); }
+	 
+}*/

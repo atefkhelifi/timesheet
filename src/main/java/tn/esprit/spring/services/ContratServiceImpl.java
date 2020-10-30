@@ -48,8 +48,8 @@ public class ContratServiceImpl implements IContratService {
 	 * id); // Optional retrun type - Java 8 (susceptible de retourner des valeurs
 	 * «vides» et pas null) Contrat c = contratRepository.findById(id).orElse(null);
 	 * //User u = userRepository.findById(Long.parseLong(id)).get();
-	 * l.info("Contrat   returned : " + c); return c; }
-	 */
+	  l.info("Contrat   returned : " + c); return c; }
+	 
 
 	/*
 	 * public Contrat updateContrat(int id) { Contrat contrat = new Contrat();
