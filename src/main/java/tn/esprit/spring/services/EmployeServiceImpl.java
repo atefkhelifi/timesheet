@@ -3,6 +3,7 @@ package tn.esprit.spring.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,10 +51,12 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
 		l.info("In  MettreAjourEmailByEmployeId : ");
-		Employe employe = employeRepository.findById(employeId).get();
-		employe.setEmail(email);
-		employeRepository.save(employe);
-		l.info("Out of  MettreAjourEmailByEmployeId. ");
+		Optional<Employe> value = employeRepository.findById(employeId);
+		if (value.isPresent()) {
+			Employe employe = value.get();
+			employe.setEmail(email);
+			employeRepository.save(employe);
+		}
 
 	}
 
@@ -61,22 +64,35 @@ public class EmployeServiceImpl implements IEmployeService {
 	public void affecterEmployeADepartement(int employeId, int depId) {
 		l.info("In  AffecterEmployeADepartement. ");
 		l.info("In  FindDepartement : " + depId);
-		Departement depManagedEntity = deptRepoistory.findById(depId).get();
+		Optional<Departement> valued = deptRepoistory.findById(depId);
 		l.info("Out Of  FindDepartement : " + depId);
 		l.info("In  FindEmploye : " + employeId);
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
+		Optional<Employe> valuee = employeRepository.findById(employeId);	
 		l.info("Out Of FindEmploye : " + employeId);
-		l.info(" if there are  no employees  ");
-		if (depManagedEntity.getEmployes() == null) {
-			List<Employe> employes = new ArrayList<>();
-			employes.add(employeManagedEntity);
-			depManagedEntity.setEmployes(employes);
-		} else {
-			l.info(" if there are employees ");
-			depManagedEntity.getEmployes().add(employeManagedEntity);
-		}
-		// à ajouter?
-		deptRepoistory.save(depManagedEntity);
+
+		if (valued.isPresent()) {
+			Departement dep = valued.get();
+		
+
+			if (valuee.isPresent()) {
+				Employe empl = valuee.get();
+			
+
+			
+			if(dep.getEmployes() == null){
+
+				List<Employe> employes = new ArrayList<>();
+				employes.add(empl);
+				dep.setEmployes(employes);
+			}else{
+
+				dep.getEmployes().add(empl);
+			}
+
+			// à ajouter? 
+			deptRepoistory.save(dep); 
+			}	}
+	
 		l.info("Out of  AffecterEmployeADepartement. ");
 
 	}
@@ -84,8 +100,14 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
-		Departement dep = deptRepoistory.findById(depId).get();
+		l.info(" IN DesaffecterEmployeDuDepartement");
+		
+		
+		Optional<Departement> value = deptRepoistory.findById(depId);
 
+		if (value.isPresent()) {
+			Departement dep = value.get();
+			
 		int employeNb = dep.getEmployes().size();
 		for(int index = 0; index < employeNb; index++){
 			if(dep.getEmployes().get(index).getId() == employeId){
@@ -93,7 +115,8 @@ public class EmployeServiceImpl implements IEmployeService {
 				break;//a revoir
 			}
 		}
-	} 
+	}
+		}
 	
 	// Tablesapce (espace disque) 
 
@@ -105,41 +128,67 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {
-		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 		l.info("In  FindContrat : " + contratId); 
+		Optional<Contrat> valuec = contratRepoistory.findById(contratId);
 		l.info("In  FindEmploye : " + employeId); 
-		contratManagedEntity.setEmploye(employeManagedEntity);
-		contratRepoistory.save(contratManagedEntity);
+		Optional<Employe> valuee = employeRepository.findById(employeId);
+		
+		if (valuec.isPresent()) {
+			Contrat contrat = valuec.get();
+		
+
+			if (valuee.isPresent()) {
+				Employe empl = valuee.get();
+				
+				contrat .setEmploye(empl);
+				contratRepoistory.save(contrat );
+			}
+		}
 		l.info("Out of  ContratEmploye. "); 
 
 	}
 
 	public String getEmployePrenomById(int employeId) {
-		l.info("In  GetEmployePrenomById= " + employeId);
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
+		l.info("In  GetEmployePrenomById");
+		Optional<Employe> value = employeRepository.findById(employeId);
+		Employe employeManagedEntity = new Employe();
+		if (value.isPresent()) {
+			employeManagedEntity = value.get();
+			
+
+		}
 		return employeManagedEntity.getPrenom();
+	
 	}
 	public void deleteEmployeById(int employeId) {
-		l.info("In  DeleteEmployeById= " + employeId);
-		Employe employe = employeRepository.findById(employeId).get();
+		l.info("In  DeleteEmployeById  ");
+		Optional<Employe> value = employeRepository.findById(employeId);
 
-		// Desaffecter l'employe de tous les departements
-		// c'est le bout master qui permet de mettre a jour
-		// la table d'association
-		for (Departement dep : employe.getDepartements()) {
+		if (value.isPresent()) {
+			Employe employe = value.get();
+		
+		//Desaffecter l'employe de tous les departements
+		//c'est le bout master qui permet de mettre a jour
+		//la table d'association
+		for(Departement dep : employe.getDepartements()){
 			dep.getEmployes().remove(employe);
 		}
 
 		employeRepository.delete(employe);
+	}
 		l.info("out of DeleteEmployeById");
 	}
 
 	public void deleteContratById(int contratId) {
 		l.info("In  DeleteContratById = " + contratId);
-		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
-		contratRepoistory.delete(contratManagedEntity);
-		l.info("entreprise deleted." + contratManagedEntity.getReference());
+		Optional<Contrat> value = contratRepoistory.findById(contratId);
+
+		if (value.isPresent()) {
+			Contrat contrat = value.get() ;
+		contratRepoistory.delete(contrat);
+
+	}
+		
 		l.info("out of DeleteContratById");
 
 	}
