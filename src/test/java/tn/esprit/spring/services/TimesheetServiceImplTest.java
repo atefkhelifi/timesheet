@@ -28,7 +28,7 @@ import tn.esprit.spring.repository.TimesheetRepository;
 @SpringBootTest
 public class TimesheetServiceImplTest {
 	@Autowired 
-	ITimesheetService Tm; 
+	ITimesheetService tM; 
 	@Autowired
 	MissionRepository missionRepository;
 	@Autowired
@@ -41,15 +41,15 @@ public class TimesheetServiceImplTest {
 	@Test
 	public void testAjouterMission() {
 	Mission mission = new Mission("test", "facile");
-	int id=	Tm.ajouterMission(mission);
-	//List<Mission> missions= (List<Mission>) missionRepository.findAll();
+	int id=	tM.ajouterMission(mission);
+	
 		
 		assertEquals(5,id);
 	}
 @Test
 public void testAffecterMission() {
 	
- Tm.affecterMissionADepartement(4,1);
+ tM.affecterMissionADepartement(4,1);
  Mission mission =missionRepository.findById(4).get();
  int iddept=mission.getDepartement().getId();
  assertEquals(1,iddept);
@@ -65,7 +65,7 @@ SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date df =dataFormat.parse("2020-10-25");
 		
 	 TimesheetPK timesheetPK = new TimesheetPK(5,1, db, df);
-	Tm.ajouterTimesheet(5, 1, db, df);
+	tM.ajouterTimesheet(5, 1, db, df);
 	
 	int idm=timesheetPK.getIdMission();
 	
@@ -76,7 +76,7 @@ SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 	@Test
 	public void testAllEmployeByMission() {
 		
-		List<Employe> listEmploye = Tm.getAllEmployeByMission(1);
+		List<Employe> listEmploye = tM.getAllEmployeByMission(1);
 	 assertEquals(1,listEmploye.size());
 	}  
 	
@@ -84,12 +84,12 @@ SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 	@Test
 	public void testAllMissionByEmploye() {
 		
-		List<Mission> listMission = Tm.findAllMissionByEmployeJPQL(1);
+		List<Mission> listMission = tM.findAllMissionByEmployeJPQL(1);
 	 assertEquals(4,listMission.size());
 	}  
 	
 	@Test
-	public void ValiderTimesheet() throws ParseException {
+	public void valider() throws ParseException {
 		SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date db=dataFormat.parse("2020-10-23");
 		Date df =dataFormat.parse("2020-10-25");
@@ -99,7 +99,7 @@ SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
 validateur.setRole(Role.CHEF_DEPARTEMENT);
 		
-		Tm.validerTimesheet(3,1,db,df,1);
+		tM.validerTimesheet(3,1,db,df,1);
 		timesheet.setValide(true);
 		//int idV=timesheet.getEmploye().getId();
 		int idv=validateur.getId();

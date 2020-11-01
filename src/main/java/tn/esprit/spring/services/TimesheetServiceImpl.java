@@ -3,6 +3,7 @@ package tn.esprit.spring.services;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 
@@ -43,13 +44,23 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	}
     
 	public void affecterMissionADepartement(int missionId, int depId) {
-		
-		Mission mission = missionRepository.findById(missionId).get();
-		Departement dep = deptRepoistory.findById(depId).get();
 		l.info("In  FindMission : " + missionId); 
 		l.info("In  FindDepartment : " + depId); 
-		mission.setDepartement(dep);
-		missionRepository.save(mission);
+		
+		Optional<Mission> value= missionRepository.findById(missionId);
+		
+	
+		Optional<Departement> value1 =deptRepoistory.findById(depId);
+		
+		if(value.isPresent() && value1.isPresent()) {
+		
+			
+				Departement dep=value1.get();
+				Mission mission=value.get();  
+				 mission.setDepartement(dep);
+			
+		
+		missionRepository.save(mission);}
 		l.info("Out of  MissionToDepartment. "); 
 		    
 	}
@@ -74,13 +85,19 @@ public class TimesheetServiceImpl implements ITimesheetService {
 
 	
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
-		//l.info("In  ValidateTimsheet : " + u); 
+	
 		l.info("In valider Timesheet");
-		Employe validateur = employeRepository.findById(validateurId).get();
-		Mission mission = missionRepository.findById(missionId).get();
+		Optional <Employe> value =employeRepository.findById(validateurId);
+		
+		
+		Optional <Mission> value1 =missionRepository.findById(missionId);
+		if (value.isPresent() && value1.isPresent()) {
+			Employe validateur=value.get();
+			Mission mission =value1.get();
+		
 		//verifier s'il est un chef de departement (interet des enum)
 		if(!validateur.getRole().equals(Role.CHEF_DEPARTEMENT)){
-			System.out.println("l'employe doit etre chef de departement pour valider une feuille de temps !");
+			l.info("l'employe doit etre chef de departement pour valider une feuille de temps !");
 			return;
 		}
 		//verifier s'il est le chef de departement de la mission en question
@@ -102,10 +119,10 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		
 		//Comment Lire une date de la base de données
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		System.out.println("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
+		l.info("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
 		l.info("OUT of valider Timesheet");
 	}
-
+	}
 	
 	public List<Mission> findAllMissionByEmployeJPQL(int employeId) {
 		l.info("in GetMissionByEmploye = " + employeId);
