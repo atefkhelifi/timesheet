@@ -124,42 +124,7 @@ String var ="/login.xhtml?faces-redirect=true";
 
 	// getters and setters 
 
-	public IEmployeService getEmployeService() {
-		return employeService;
-	}
 
-	public void setEmployeService(IEmployeService employeService) {
-		this.employeService = employeService;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public List<Employe> getAllEmployes() {
-		return employeService.getAllEmployes();
-	}
-
-	public Boolean getLoggedIn() {
-		return loggedIn;
-	}
-
-	public void setLoggedIn(Boolean loggedIn) {
-		this.loggedIn = loggedIn;
-	}
 
 	public int ajouterEmploye(Employe employe)
 	{
@@ -245,6 +210,46 @@ String var ="/login.xhtml?faces-redirect=true";
 		return employeService.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
 	}
 
+	public IEmployeService getEmployeService() {
+		return employeService;
+	}
+
+	public void setEmployeService(IEmployeService employeService) {
+		this.employeService = employeService;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Boolean getLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(Boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+
+	public Employe getAuthenticatedUser() {
+		return authenticatedUser;
+	}
+
+	public void setAuthenticatedUser(Employe authenticatedUser) {
+		this.authenticatedUser = authenticatedUser;
+	}
+
 	public String getPrenom() {
 		return prenom;
 	}
@@ -269,9 +274,6 @@ String var ="/login.xhtml?faces-redirect=true";
 		this.email = email;
 	}
 
-
-
-
 	public boolean isActif() {
 		return actif;
 	}
@@ -289,7 +291,6 @@ String var ="/login.xhtml?faces-redirect=true";
 	}
 
 	public List<Employe> getEmployes() {
-		employes = employeService.getAllEmployes(); 
 		return employes;
 	}
 
@@ -303,14 +304,6 @@ String var ="/login.xhtml?faces-redirect=true";
 
 	public void setEmployeIdToBeUpdated(Integer employeIdToBeUpdated) {
 		this.employeIdToBeUpdated = employeIdToBeUpdated;
-	}
-
-	public Employe getAuthenticatedUser() {
-		return authenticatedUser;
-	}
-
-	public void setAuthenticatedUser(Employe authenticatedUser) {
-		this.authenticatedUser = authenticatedUser;
 	}
 
 }
