@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
 
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
@@ -35,7 +36,7 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testAddEntreprise() throws ParseException {
-		//Entreprise e = new Entreprise("Focus", "marketing"); 
+		
 		  Entreprise  e = new Entreprise("Teamwill","sssss") ;
           Entreprise entrepriseAdded = es.ajouterEntreprise(e);
 		  assertEquals(e.getName(), entrepriseAdded.getName());
@@ -51,10 +52,10 @@ public class EntrepriseServiceImplTest {
 		  assertEquals(dep.getName(), departementAdded.getName());
 		}
 	
+	
 	@Test
 	public void testgetEntrepriseById() {
-		//Entreprise EntrepriseByIdRetrieved = es.getEntrepriseById(1); 
-		//assertEquals(1L, EntrepriseByIdRetrieved.getId());
+		
 		  Entreprise entrepriseRetrieved =es.getEntrepriseById(3); 
 	      assertEquals(3, entrepriseRetrieved.getId());
 	}
@@ -62,6 +63,7 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testgetAllDepartementsNamesByEntreprise() {
+		
 		List<String>listDepartments = es.getAllDepartementsNamesByEntreprise(3); 
 		// if there are 5 departements in DB : 
 		assertEquals(5, listDepartments.size());
@@ -71,7 +73,9 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testRetrieveAllEntreprises() {
+		
 		List<Entreprise> listEntreprises = es.retrieveAllEntreprises(); 
+		
 		// if there are 5 users in DB : 
 		assertEquals(2, listEntreprises.size());
 	}
@@ -80,34 +84,36 @@ public class EntrepriseServiceImplTest {
 	
 	 @Test
 	 public void testdeleteEntrepriseById() {
-		  
-		  
 		 
 		  es.deleteEntrepriseById(5); 
 		  Entreprise e =entrepriseRepoistory.findById(5).get();
 		  assertEquals(5, e.getId()); 
 	}
 	
-/*
+
 	
 	@Test
 	public void testdeleteDepartementById() {
 	  
-	  Departement d=deptRepoistory.findById(6).get();
-	  es.deleteDepartementById(6);
-	  assertEquals(6, d.getId());
-		
-	}*/
+		Optional<Departement> d=deptRepoistory.findById(6);
+		if (d.isPresent()) {
+			Departement departement = d.get();
+			  es.deleteDepartementById(6);
+			  assertEquals(6, departement.getId());
+		}
+	}
 	
 	
-/*	@Test 
+	@Test 
 	public void testaffecterDepartementAEntreprise() {
-	Entreprise e =entrepriseRepoistory.findById(7).get();
-	  
-	// Departement d=deptRepoistory.findById(6).get();
-	  
-	  es.affecterDepartementAEntreprise(6, 7); 
-	  assertEquals(1, e.getDepartements().size());		
-	}*/
+		
+		Optional<Entreprise> e =entrepriseRepoistory.findById(7);
+		if (e.isPresent()) {
+			
+			Entreprise entreprise = e.get();
+			es.affecterDepartementAEntreprise(6, 7); 
+			assertEquals(1, entreprise.getDepartements().size());		
+	}
+	}
 	
 }
