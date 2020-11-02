@@ -17,7 +17,6 @@ public class ContratServiceImpl implements IContratService {
 
 	private static final Logger l = Logger.getLogger(ContratServiceImpl.class);
 
-	// Logger logger = LoggerFactory.getLogger(this.getClass());
 	public List<Contrat> getAllContrats()
 
 	{
@@ -43,19 +42,16 @@ public class ContratServiceImpl implements IContratService {
 		l.info("Out of  ajoutContrat. ");
 		return contratSaved;
 	}
-	/*
-	 * public Contrat retrieveContrat(int id) { l.info("in  retrieveContrat id = " +
-	 * id); // Optional retrun type - Java 8 (susceptible de retourner des valeurs
-	 * «vides» et pas null) Contrat c = contratRepository.findById(id).orElse(null);
-	 * //User u = userRepository.findById(Long.parseLong(id)).get();
-	  l.info("Contrat   returned : " + c); return c; }
+	
+	 public Contrat retrieveContrat(int id) { l.info("in  retrieveContrat id = " +
+	  id); 
+	 Contrat c = contratRepository.findById(id).orElse(null);
 	 
+	  l.info("Contrat   returned : " + c); return c; }
+	
 
-	/*
-	 * public Contrat updateContrat(int id) { Contrat contrat = new Contrat();
-	 * contratRepository.findById(id);
-	 * 
-	 * return (Contrat)contratRepository.save(contrat); }
-	 */
+	
+	
+	 
 
 }
