@@ -210,7 +210,7 @@ String var ="/login.xhtml?faces-redirect=true";
 		return employeService.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
 	}
 
-	public IEmployeService getEmployeService() {
+/*	public IEmployeService getEmployeService() {
 		return employeService;
 	}
 
@@ -249,7 +249,7 @@ String var ="/login.xhtml?faces-redirect=true";
 	public void setAuthenticatedUser(Employe authenticatedUser) {
 		this.authenticatedUser = authenticatedUser;
 	}
-
+*/
 	public String getPrenom() {
 		return prenom;
 	}
