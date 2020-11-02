@@ -109,7 +109,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 			}
 		}
 		if(!chefDeLaMission){
-			System.out.println("l'employe doit etre chef de departement de la mission en question");
+			l.debug("l'employe doit etre chef de departement de la mission en question");
 			return;
 		}
 //
