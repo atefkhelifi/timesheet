@@ -54,11 +54,13 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	public Entreprise getEntrepriseById(int entrepriseId) {
 		l.info("in  getEntreprise id = " + entrepriseId);
 
-		Entreprise e =entrepriseRepoistory.findById(entrepriseId).get();
-		
+		Optional<Entreprise> e =entrepriseRepoistory.findById(entrepriseId);
+		if (e.isPresent()) {
+			Entreprise entreprise = e.get();
 			l.info("entreprise returned : " + e);
-		
-		return e;
+			return entreprise;
+		}
+		return null;
 	}
 	
 	@Transactional
