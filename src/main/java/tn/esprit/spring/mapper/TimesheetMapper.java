@@ -38,7 +38,6 @@ public class TimesheetMapper {
 		mappedContrat.setDateDebut(contratdto.getDateDebut());
 		mappedContrat.setEmploye(contratdto.getEmploye());
 		mappedContrat.setSalaire(contratdto.getSalaire());
-	
 		mappedContrat.setTypeContrat(contratdto.getTypeContrat());
 			return mappedContrat;
 	}

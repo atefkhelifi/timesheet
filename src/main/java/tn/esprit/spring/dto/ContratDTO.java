@@ -66,6 +66,12 @@ public class ContratDTO{
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
-	
+	public float getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(float telephone) {
+		this.telephone = telephone;
+	}
 	
 }
