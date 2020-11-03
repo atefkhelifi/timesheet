@@ -7,8 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.repository.DepartementRepository;
 
 @Service
@@ -59,16 +57,9 @@ public class DepartementServiceImpl implements IDepartementService {
 	
 	public Departement retrieveDepartement(int id) {
 		l.info("in  retrieveDepartement id = " + id);
-		 //d=deptRepoistory.findById(depId);
 
 		 Optional <Departement> u =  deptRepoistory.findById(id);
-/*
- if (d.isPresent()) {
-			
-		deptRepoistory.delete(val);
-		
-		l.info("departement deleted." +val.getName() );}
-		*/
+
 		 if (u.isPresent()) {
 			 Departement val=u.get();
 		 
