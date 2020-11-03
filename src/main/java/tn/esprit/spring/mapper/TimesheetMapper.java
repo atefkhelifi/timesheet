@@ -2,8 +2,10 @@ package tn.esprit.spring.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import tn.esprit.spring.dto.ContratDTO;
 import tn.esprit.spring.dto.EmployeDTO;
 import tn.esprit.spring.dto.MissionDTO;
+import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
 
@@ -31,6 +33,16 @@ public class TimesheetMapper {
 		mappedMission.setTimesheets(missiondto.getTimesheets());
 			return mappedMission;
 	}
+	public Contrat mapContratDtoToContrat(ContratDTO contratdto) {
+		Contrat mappedContrat = modelMapper.map(contratdto, Contrat.class);
+		mappedContrat.setDateDebut(contratdto.getDateDebut());
+		mappedContrat.setEmploye(contratdto.getEmploye());
+		mappedContrat.setSalaire(contratdto.getSalaire());
+	
+		mappedContrat.setTypeContrat(contratdto.getTypeContrat());
+			return mappedContrat;
+	}
+	
 	
 
 }
