@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.dto.DepartementDTO;
 import tn.esprit.spring.dto.EntrepriseDTO;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
@@ -64,12 +65,13 @@ public class RestControlEntreprise {
 	}
     
 
- 	@PostMapping("/ajouterDepartement")
+    @PostMapping("/ajouterDepartement")
  	@ResponseBody
-	public Departement ajouterDepartement(@RequestBody Departement dep) {
+	public Departement ajouterDepartement(@RequestBody DepartementDTO d) {
+    	
+    	Departement dep = timesheetMapper.mapDepartementDtoToDepartement(d);
 		return ientrepriseservice.ajouterDepartement(dep);
 	}
-	
  	 
     @GetMapping(value = "getAllDepartementsNamesByEntreprise/{identreprise}")
     @ResponseBody
