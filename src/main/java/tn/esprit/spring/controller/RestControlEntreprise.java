@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.dto.EntrepriseDTO;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.mapper.TimesheetMapper;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 import tn.esprit.spring.services.ITimesheetService;
@@ -28,12 +30,15 @@ public class RestControlEntreprise {
 	IEntrepriseService ientrepriseservice;
 	@Autowired
 	ITimesheetService itimesheetservice;
+	@Autowired
+	TimesheetMapper timesheetMapper;
 	
 	@PostMapping("/ajouterEntreprise")
 	@ResponseBody
-	public int ajouterEntreprise(@RequestBody Entreprise ssiiConsulting) {
-		ientrepriseservice.ajouterEntreprise(ssiiConsulting);
-		return ssiiConsulting.getId();
+	public int ajouterEntreprise(@RequestBody EntrepriseDTO e) {
+		Entreprise entreprise = timesheetMapper.mapEntrepritDtoToEntreprise(e);
+		ientrepriseservice.ajouterEntreprise(entreprise);
+		return entreprise.getId();
 	}
 	
 	

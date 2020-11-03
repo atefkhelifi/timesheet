@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import tn.esprit.spring.dto.ContratDTO;
 import tn.esprit.spring.dto.EmployeDTO;
+import tn.esprit.spring.dto.EntrepriseDTO;
 import tn.esprit.spring.dto.MissionDTO;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Employe;
+import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Mission;
 
 public class TimesheetMapper {
@@ -42,6 +44,13 @@ public class TimesheetMapper {
 			return mappedContrat;
 	}
 	
+	public Entreprise mapEntrepritDtoToEntreprise(EntrepriseDTO entreprisedto) {
+		Entreprise mappedEntreprise = modelMapper.map(entreprisedto, Entreprise.class);
+		mappedEntreprise.setId(entreprisedto.getId());
+		mappedEntreprise.setName(entreprisedto.getName());
+		mappedEntreprise.setRaisonSocial(entreprisedto.getRaisonSocial());
+			return mappedEntreprise;
+	}
 	
 
 }
