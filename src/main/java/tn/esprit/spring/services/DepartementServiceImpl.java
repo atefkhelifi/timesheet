@@ -1,12 +1,14 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.apache.logging.log4j.LogManager;
 import tn.esprit.spring.entities.Departement;
+import tn.esprit.spring.entities.Employe;
+import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.repository.DepartementRepository;
 
 @Service
@@ -32,10 +34,12 @@ public class DepartementServiceImpl implements IDepartementService {
 	public void deleteDepartement(int depId) {
 		l.info("in  deleteDepartement id = " + depId);
 
-		Departement d=deptRepoistory.findById(depId).get();
-		deptRepoistory.delete(d);
+		Optional <Departement> d=deptRepoistory.findById(depId);
+		if (d.isPresent()) {
+			Departement val=d.get();
+		deptRepoistory.delete(val);
 		
-		l.info("departement deleted." +d.getName() );
+		l.info("departement deleted." +val.getName() );}
 		l.info("out of  deleteDepartement");
 	}
 
@@ -55,9 +59,25 @@ public class DepartementServiceImpl implements IDepartementService {
 	
 	public Departement retrieveDepartement(int id) {
 		l.info("in  retrieveDepartement id = " + id);
-		Departement u =  deptRepoistory.findById(id).get();
-		l.info("user returned : " + u);
-		return u; 
+		 //d=deptRepoistory.findById(depId);
+
+		 Optional <Departement> u =  deptRepoistory.findById(id);
+/*
+ if (d.isPresent()) {
+			
+		deptRepoistory.delete(val);
+		
+		l.info("departement deleted." +val.getName() );}
+		*/
+		 if (u.isPresent()) {
+			 Departement val=u.get();
+		 
+		 l.info("user returned : " + val);
+		 
+		 return val; 
+		 }
+		return null;
+		
 	}
 	
 }

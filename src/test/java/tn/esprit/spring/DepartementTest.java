@@ -2,7 +2,6 @@ package tn.esprit.spring;
 
 import static org.junit.Assert.assertEquals;
 
-import java.text.ParseException;
 import java.util.List;
 
 import org.junit.Test;
@@ -24,8 +23,8 @@ public class DepartementTest {
 	@Autowired
 	DepartementRepository deptRepoistory;
 	
-	/*@Test
-	public void testRetrieveDepartement() {
+	@Test
+	public void testRetrieveAllDepartement() {
 		List<Departement> departements = depService.getAllDepartements(); 
 		assertEquals(2, departements.size());
 	}
@@ -47,7 +46,7 @@ depService.deleteDepartement(2);
 	  List<Departement> departements = depService.getAllDepartements(); 
 		assertEquals(0, departements.size());
 		   
-	 }*/
+	 }
 	@Test
 	public void testAddDepartement() {
 		Departement u = new Departement("aa"); 
@@ -65,7 +64,7 @@ depService.deleteDepartement(2);
 	@Test
 	public void testRetrieveDepartement() {
 		Departement departementRetrieved = depService.retrieveDepartement(3); 
-		assertEquals(3, departementRetrieved.getId());
+		assertEquals(2, departementRetrieved.getId());
 	}
 	
 	 
