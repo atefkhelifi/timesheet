@@ -3,7 +3,9 @@ package tn.esprit.spring.mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import tn.esprit.spring.dto.EmployeDTO;
+import tn.esprit.spring.dto.MissionDTO;
 import tn.esprit.spring.entities.Employe;
+import tn.esprit.spring.entities.Mission;
 
 public class TimesheetMapper {
 	@Autowired
@@ -20,6 +22,14 @@ public class TimesheetMapper {
 		mappedEmploye.setRole(employedto.getRole());
 		mappedEmploye.setTimesheets(employedto.getTimesheets());
 			return mappedEmploye;
+	}
+	public Mission mapMissionDtoToMission(MissionDTO missiondto) {
+		Mission mappedMission = modelMapper.map(missiondto, Mission.class);
+		mappedMission.setDepartement(missiondto.getDepartement());
+		mappedMission.setDescription(missiondto.getDescription());
+		mappedMission.setName(missiondto.getName());
+		mappedMission.setTimesheets(missiondto.getTimesheets());
+			return mappedMission;
 	}
 	
 
