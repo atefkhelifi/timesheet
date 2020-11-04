@@ -6,6 +6,7 @@ import tn.esprit.spring.dto.ContratDTO;
 import tn.esprit.spring.dto.DepartementDTO;
 import tn.esprit.spring.dto.EmployeDTO;
 import tn.esprit.spring.dto.EntrepriseDTO;
+import tn.esprit.spring.dto.MissionDTO;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
@@ -28,7 +29,7 @@ public class TimesheetMapper {
 		mappedEmploye.setTimesheets(employedto.getTimesheets());
 			return mappedEmploye;
 	}
-	public Mission mapMissionDtoToMission(Mission missiondto) {
+	public Mission mapMissionDtoToMission(MissionDTO missiondto) {
 		Mission mappedMission = modelMapper.map(missiondto, Mission.class);
 		mappedMission.setDepartement(missiondto.getDepartement());
 		mappedMission.setDescription(missiondto.getDescription());
