@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.spring.dto.MissionDTO;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.mapper.TimesheetMapper;
@@ -35,7 +34,7 @@ public class RestControlTimesheet {
 	
 	@PostMapping("/ajouterMission")
 	@ResponseBody
-	public int ajouterMission(@RequestBody MissionDTO m) {
+	public int ajouterMission(@RequestBody Mission m) {
 		Mission mission =timesheetMapper.mapMissionDtoToMission(m);
 		itimesheetservice.ajouterMission(mission);
 		return mission.getId();
