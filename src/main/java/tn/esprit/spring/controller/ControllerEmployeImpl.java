@@ -122,11 +122,6 @@ String var ="/login.xhtml?faces-redirect=true";
 
 	} 
 
-
-	// getters and setters 
-
-
-
 	public int ajouterEmploye(Employe employe)
 	{
 		employeService.addOrUpdateEmploye(employe);
