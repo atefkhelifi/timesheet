@@ -26,21 +26,21 @@ public class EmployeDTO {
 	
 	private boolean actif;
 	@Enumerated(EnumType.STRING)
-	//@NotNull
+	
 	private Role role;
-	//@JsonBackReference  
+	
 		@JsonIgnore
 		@ManyToMany(mappedBy="employes",fetch=FetchType.EAGER )
-		//@NotNull
+		
 		private List<Departement> departements;
 		
 		@JsonIgnore
-		//@JsonBackReference
+		
 		@OneToOne(mappedBy="employe")
 		private Contrat contrat;
 		
 		@JsonIgnore
-		//@JsonBackReference
+		
 		@OneToMany(mappedBy="employe")
 		private List<Timesheet> timesheets;
 

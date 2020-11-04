@@ -2,11 +2,11 @@ package tn.esprit.spring.services;
 
 import static org.junit.Assert.assertEquals;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Role;
@@ -50,9 +49,15 @@ public class TimesheetServiceImplTest {
 public void testAffecterMission() {
 	
  tM.affecterMissionADepartement(4,1);
- Mission mission =missionRepository.findById(4).get();
- int iddept=mission.getDepartement().getId();
- assertEquals(1,iddept);
+ Optional<Mission> value= missionRepository.findById(4);
+ if(value.isPresent()) {
+	 Mission mission=value.get();  
+	 int iddept=mission.getDepartement().getId();
+	 assertEquals(1,iddept);
+ }
+
+
+ 
 	
 	
 	
@@ -93,19 +98,25 @@ SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date db=dataFormat.parse("2020-10-23");
 		Date df =dataFormat.parse("2020-10-25");
-		Employe validateur = employeRepository.findById(1).get();
-	
-		TimesheetPK timesheetPK = new TimesheetPK(3,1,db,df);
-		Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
-validateur.setRole(Role.CHEF_DEPARTEMENT);
-		
-		tM.validerTimesheet(3,1,db,df,1);
-		timesheet.setValide(true);
-		//int idV=timesheet.getEmploye().getId();
-		int idv=validateur.getId();
-		
-	 assertEquals(1,idv);
+		Optional <Employe> value =employeRepository.findById(1);
+		if (value.isPresent()) {
+			Employe validateur=value.get();
+			TimesheetPK timesheetPK = new TimesheetPK(3,1,db,df);
+			Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
+	validateur.setRole(Role.CHEF_DEPARTEMENT);
+			
+			tM.validerTimesheet(3,1,db,df,1);
+			timesheet.setValide(true);
+			
+			int idv=validateur.getId();
+			
+		 assertEquals(1,idv);
 
+		}
+		
+		
+	
+		
 	}  
 	
 }

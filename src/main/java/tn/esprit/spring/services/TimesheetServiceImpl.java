@@ -95,12 +95,12 @@ public class TimesheetServiceImpl implements ITimesheetService {
 			Employe validateur=value.get();
 			Mission mission =value1.get();
 		
-		//verifier s'il est un chef de departement (interet des enum)
+		
 		if(!validateur.getRole().equals(Role.CHEF_DEPARTEMENT)){
 			l.info("l'employe doit etre chef de departement pour valider une feuille de temps !");
 			return;
 		}
-		//verifier s'il est le chef de departement de la mission en question
+		
 		boolean chefDeLaMission = false;
 		for(Departement dep : validateur.getDepartements()){
 			if(dep.getId() == mission.getDepartement().getId()){
@@ -117,7 +117,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
 		timesheet.setValide(true);
 		
-		//Comment Lire une date de la base de données
+		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		l.info("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
 		l.info("OUT of valider Timesheet");

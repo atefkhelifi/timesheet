@@ -2,7 +2,6 @@ package tn.esprit.spring.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Contrat;
-import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Timesheet;
@@ -48,7 +46,7 @@ public class EmployeServiceImplTest {
 		assertEquals(1, authenticateEmploye.getId());
 	}
 
-	/***************************************************/
+
 
 	@Test
 	public void TestAddOrUpdateEmploye() {
@@ -58,7 +56,7 @@ public class EmployeServiceImplTest {
 		assertEquals(5, idEmploye);
 	}
 
-	/*************************************************/
+	
 
 	@Test
 	public void TestmettreAjourEmailByEmployeId() {
@@ -69,7 +67,7 @@ public class EmployeServiceImplTest {
 
 	}
 	
-	/********************************************/
+	
 
 	@Test
 	public void testAffecterEmployeADepartement() {
@@ -80,7 +78,7 @@ public class EmployeServiceImplTest {
 		assertEquals(2, id1);
 	}
 
-	/********************************/
+	
 
 	 @Test
 	 public void desaffecterEmployeDuDepartementTest() {
@@ -90,7 +88,7 @@ public class EmployeServiceImplTest {
 	 assertEquals(0, z);
 	 }
 
-	/**********************/
+	
 
 	@Test
 	public void TestAjouterContrat() throws ParseException {
@@ -102,7 +100,7 @@ public class EmployeServiceImplTest {
 		assertEquals(5, idcontrat);
 	}
 
-	/***************************************/
+	
 
 	@Test
 	public void testAffecterContratAEmployet() {
@@ -114,7 +112,7 @@ public class EmployeServiceImplTest {
 
 	}
 
-	/**********************************************/
+	
 
 	@Test
 	public void TestgetEmployePrenomById() {
@@ -123,8 +121,7 @@ public class EmployeServiceImplTest {
 
 	}
 
-	/***************************/
-
+	
 	@Test
 	public void TestdeleteEmployeById() {
 		employeServiceImpl.deleteEmployeById(3);
@@ -132,7 +129,6 @@ public class EmployeServiceImplTest {
 		assertEquals(2, empl.size());
 	}
 
-	/********************************/
 
 	@Test
 	public void TestDeleteContratById() {
@@ -141,7 +137,7 @@ public class EmployeServiceImplTest {
 		assertEquals(2, contrat.size());
 	}
 
-	/*****************************/
+	
 
 	@Test
 	public void TestgetNombreEmployeJPQL() {
@@ -149,7 +145,6 @@ public class EmployeServiceImplTest {
 		assertEquals(2, nbr);
 	}
 
-	/**************************************************/
 
 	@Test
 	public void TestgetAllEmployeNamesJPQL() {
@@ -157,7 +152,7 @@ public class EmployeServiceImplTest {
 		assertEquals(2, emp.size());
 	}
 
-	/*******************************/
+
 
 	@Test
 	public void TestmettreAjourEmailByEmployeIdJPQL() {
@@ -166,7 +161,7 @@ public class EmployeServiceImplTest {
 		assertEquals("loutcha.mejri.1@esprit.tn", employe.getEmail());
 	}
 
-	/*******************************/
+	
 
 	@Test
 	public void TestdeleteAllContratJPQL() {
@@ -175,7 +170,7 @@ public class EmployeServiceImplTest {
 		assertEquals(0, contrat.size());
 	}
 
-	/********************************/
+
 
 	@Test
 	public void TestgetSalaireByEmployeIdJPQL() {
@@ -184,7 +179,7 @@ public class EmployeServiceImplTest {
 		assertEquals(250, salaire, 0);
 	}
 
-	/***********************************/
+	
 
 	@Test
 	public void TestgetSalaireMoyenByDepartementId() {
@@ -193,7 +188,7 @@ public class EmployeServiceImplTest {
 		assertEquals(250, sal, 0);
 	}
 
-	/**********************************************/
+
 
 	@Test
 	public void TestgetTimesheetsByMissionAndDate() throws ParseException {
@@ -206,7 +201,7 @@ public class EmployeServiceImplTest {
 		assertNotNull(l);
 	}
 
-	/**********************/
+	
 	@Test
 	public void testGetAllEmployes() {
 		List<Employe> listEmploye = employeServiceImpl.getAllEmployes(); 

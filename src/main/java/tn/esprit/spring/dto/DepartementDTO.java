@@ -21,7 +21,7 @@ public class DepartementDTO{
 	
 	 String name;
 	
-	//@JsonManagedReference 
+	
 	@JsonIgnore
 	@ManyToMany
 	private List<Employe> employes;
