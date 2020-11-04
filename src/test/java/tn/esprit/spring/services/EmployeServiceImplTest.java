@@ -166,7 +166,7 @@ public class EmployeServiceImplTest {
 	@Test
 	public void TestdeleteAllContratJPQL() {
 		employeServiceImpl.deleteAllContratJPQL();
-		List<Contrat> contrat = (List<Contrat>) contratRepoistory.findAll(); // assertNull(contrat);
+		List<Contrat> contrat = (List<Contrat>) contratRepoistory.findAll();
 		assertEquals(0, contrat.size());
 	}
 
